@@ -24,8 +24,11 @@
         }
 
         #coctail-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: auto;
+            justify-content: center;
             height: calc(100vh - 17pt);
-            line-height: calc(100vh - 17pt);
             width: 100%;
             font-size: 19pt;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -33,10 +36,8 @@
             -webkit-user-select: none;
         }
 
-        #coctail {
-            display: inline-block;
-            vertical-align: middle;
-            line-height: normal;
+        #coctail-wrapper img {
+            align-self: center;
         }
 
         .presets {
