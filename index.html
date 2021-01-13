@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coctails</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background-color: rgb(233, 234, 241);
+        }
+
+        #wrapper {
+            text-align: center;
+        }
+
+        #controls {
+            height: 17pt;
+        }
+
+        #coctail-wrapper {
+            height: calc(100vh - 17pt);
+            line-height: calc(100vh - 17pt);
+            width: 100%;
+            font-size: 19pt;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgb(32, 32, 32);
+            -webkit-user-select: none;
+        }
+
+        #coctail {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+        }
+
+        .presets {
+            margin: 2pt;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: small;
+        }
+
+    </style>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="controls">
+            <div class="presets">
+                <a href="">5</a>
+                <a href="">10</a>
+                <a href="">15</a>
+                <a href="">20</a>
+                <a href="">25</a>
+                <a href="">30</a>
+                <a href="">35</a>
+                <a href="">40</a>
+            </div>
+            <input type="text" placeholder="выучено" id="max">
+            <input type="button" value="go" id="go">
+        </div>
+        <div id="coctail-wrapper">
+            <span id="coctail">
+            </span>
+            <img src="" id="gif">
+        </div>
+    </div>
+</body>
+
+</html>
