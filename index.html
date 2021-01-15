@@ -21,6 +21,12 @@
 
         #controls {
             height: 40pt;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: small;
+        }
+        #controls div {
+            margin-bottom: 5px;
+            margin-top: 5px;
         }
 
         #coctail-wrapper {
@@ -40,12 +46,6 @@
             align-self: center;
         }
 
-        .presets {
-            margin: 2pt;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: small;
-        }
-
     </style>
     <script src="script.js"></script>
 </head>
@@ -63,13 +63,25 @@
                 <a href="">35</a>
                 <a href="">40</a>
             </div>
+            <div class="train-presets">
+                Режим тренера:
+                <a data-train="true" href="">5</a>
+                <a data-train="true" href="">10</a>
+                <a data-train="true" href="">15</a>
+                <a data-train="true" href="">20</a>
+                <a data-train="true" href="">25</a>
+                <a data-train="true" href="">30</a>
+                <a data-train="true" href="">35</a>
+                <a data-train="true" href="">40</a>
+            </div>
             <input type="text" placeholder="выучено" id="max">
-            <input type="button" value="go" id="go">
+            <input type="button" value="test" id="go">
+            <input type="button" value="train" id="train">
         </div>
         <div id="coctail-wrapper">
             <span id="coctail">
             </span>
-            <img src="" id="gif">
+            <img src="" id="img">
         </div>
     </div>
 </body>
