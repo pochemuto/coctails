@@ -1,50 +1,51 @@
 const names = [
-    'Авиация',
-    'Американо',
-    'Апероль спритц',
-    'Б-52',
-    'Бакарди коктейль',
-    'Белая леди',
-    'Беллини',
-    'Белый русский',
-    'Бренди Александр',
-    'Виски сауэр',
-    'Дайкири',
-    'Джин физ',
-    'Джон коллинз',
-    'Ирландский кофе',
-    'Камикадзе',
-    'Кир',
-    'Клевер клуб',
-    'Космополитан',
-    'Кровавая мэри',
-    'Кузнечик',
-    'Лонг Айленд айс ти',
-    'Май-тай',
-    'Манхэттен',
-    'Маргарита',
-    'Между простынями',
-    'Мотоциклетная коляска',
-    'Мохито',
-    'Негрони',
-    'Олд фешен',
-    'Пина колада',
-    'Роб рой',
-    'Свободная Куба',
-    'Секс на пляже',
-    'Сухой мартини',
-    'Текила санрайз',
-    'Французская связь',
-    'Французский 75',
-    'Френч мартини',
-    'Черный русский',
-    'Эспрессо мартини',
+    ['Авиация', '01'],
+    ['Американо', '02'],
+    ['Апероль спритц', '03'],
+    ['Б-52', '04'],
+    ['Бакарди коктейль', '05'],
+    ['Белая леди', '06'],
+    ['Беллини', '07'],
+    ['Белый русский', '08'],
+    ['Бренди Александр', '09'],
+    ['Виски сауэр', 10],
+    ['Дайкири', 11],
+    ['Джин физ', 12],
+    ['Джон коллинз', 13],
+    ['Ирландский кофе', 14],
+    ['Камикадзе', 15],
+    ['Кир', 16],
+    ['Клевер клуб', 17],
+    ['Космополитан', 18],
+    ['Кровавая мэри', 19],
+    ['Кузнечик', 20],
+    ['Лонг Айленд айс ти', 21],
+    ['Май-тай', 22],
+    ['Манхэттен', 23],
+    ['Маргарита', 24],
+    ['Между простынями', 25],
+    ['Мотоциклетная коляска', 26],
+    ['Мохито', 27],
+    ['Негрони', 28],
+    ['Олд фешен', 29],
+    ['Пина колада', 30],
+    ['Роб рой', 31],
+    ['Свободная Куба', 32],
+    ['Секс на пляже', 33],
+    ['Сухой мартини', 34],
+    ['Текила санрайз', 35],
+    ['Французская связь', 36],
+    ['Французский 75', 37],
+    ['Френч мартини', 38],
+    ['Черный русский', 39],
+    ['Эспрессо мартини', 40],
 ];
 
 const tags = 'yeah,congratulations,you are the best'.split(',');
 
 var values = [...names];
 var trainerMode = false;
+var gif = null;
 
 async function getRandomGif() {
     let tag = tags[Math.floor(Math.random() * tags.length)];
@@ -80,15 +81,15 @@ async function next() {
     let img = document.querySelector('#img')
     if (!values.length) {
         let gifUrl = await getRandomGif();
-        show(null, gifUrl);
+        show(null, gif);
         values = null;
     } else {
         nextValue = values.pop();
 
         if (trainerMode) {
-            show(null, imageUrl(nextValue))
+            show(null, imageUrl(nextValue[1]))
         } else {
-            show(nextValue, null);
+            show(nextValue[0], null);
         }
     }
 }
@@ -122,13 +123,16 @@ function go(trainerMode) {
     start(min, max, trainerMode);
 }
 
-function start(from, end, trainerMode) {
+async function start(from, end, trainerMode) {
     values = names.slice(from, end);
     values.sort(() => 0.5 - Math.random());
 
     window.trainerMode = trainerMode;
 
     console.log('Selected: ' + values)
+    let gifUrl = await getRandomGif();
+    preloadImage(gifUrl);
+    gif = gifUrl
 
     next();
 }
@@ -146,7 +150,7 @@ function main() {
         element.addEventListener('click', preset)
     );
 
-    values.forEach(value => preloadImage(imageUrl(value)));
+    values.forEach(value => preloadImage(imageUrl(value[1])));
 }
 
 window.onload = main
