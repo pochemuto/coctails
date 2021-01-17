@@ -51,7 +51,7 @@ async function getRandomGif() {
     let tag = tags[Math.floor(Math.random() * tags.length)];
     let response = await fetch('https://api.giphy.com/v1/gifs/random?api_key=XbpPSafZMPZrqfXaJm7iAZ10o72z0QVQ&tag=' + tag);
     let data = await response.json();
-    return data.data.image_url;
+    return data.data.images.fixed_height.mp4;
 }
 
 function preloadImage(url) {
@@ -59,17 +59,23 @@ function preloadImage(url) {
     img.src = url;
 }
 
-function show(text, image) {
+function show(text, image, video) {
     let imageElement = document.querySelector('#img')
     let textElement = document.querySelector('#coctail')
-    console.log('Show text:', text, '; image: ', image);
-    if (text) {
-        imageElement.style.display = 'none';
-        textElement.innerText = text;
-    } else {
-        imageElement.style.display = 'initial';
+    let videoElement = document.querySelector('#video')
+    console.log('Show text:', text, '; image: ', image, '; video: ', video);
+
+    textElement.innerText = text == null ? '' : text;
+    imageElement.style.display = image == null ? 'none' : 'initial';
+    videoElement.style.display = video == null ? 'none' : 'initial';
+
+    if (image != null) {
         imageElement.src = image;
-        textElement.innerText = '';
+    }
+    if (video != null) {
+        document.querySelector('#video source').src = video;
+        videoElement.load();
+        videoElement.play();
     }
 }
 
@@ -81,7 +87,7 @@ async function next() {
     let img = document.querySelector('#img')
     if (!values.length) {
         let gifUrl = await getRandomGif();
-        show(null, gif);
+        show(null, null, gif);
         values = null;
     } else {
         nextValue = values.pop();
