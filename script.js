@@ -180,11 +180,13 @@ function main() {
             values = null;
         })
     });
-    document.querySelector('#max').addEventListener('input', event => {
+    const updateDisabled = event => {
         const disabled = getRange(event.target.value) === null;
         test.disabled = disabled;
         train.disabled = disabled;
-    })
+    };
+    document.querySelector('#max').addEventListener('input', updateDisabled)
+    document.querySelector('#max').addEventListener('change', updateDisabled)
 }
 
 window.onload = main
