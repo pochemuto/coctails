@@ -106,8 +106,8 @@ function imageUrl(name) {
 
 function preset(event) {
     event.preventDefault();
-    let trainerMode = event.srcElement.dataset.train;
-    let maxValue = parseInt(event.srcElement.innerText);
+    let trainerMode = event.target.dataset.train;
+    let maxValue = parseInt(event.target.innerText);
     start(0, maxValue, trainerMode);
 }
 
@@ -157,7 +157,19 @@ function main() {
     );
 
     values.forEach(value => preloadImage(imageUrl(value[1])));
-    start(0, 40, true);
+
+    const manual = document.querySelector("#manual-select");
+    for (let item of names) {
+        let li = document.createElement('li');
+        li.innerHTML = `<a class="dropdown-item" href="#" data-target-image="${item[1]}">${item[0]}</a>`;
+        manual.appendChild(li);
+    }
+    document.querySelectorAll('#manual-select a').forEach(element => {
+        element.addEventListener('click', (event) => {
+            let targetImage = event.target.dataset.targetImage;
+            show(null, imageUrl(targetImage))
+        })
+    });
 }
 
 window.onload = main
