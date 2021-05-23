@@ -111,21 +111,27 @@ function preset(event) {
     start(0, maxValue, trainerMode);
 }
 
-function go(trainerMode) {
-    const pattern = document.querySelector('#max').value;
+function getRange(pattern) {
     var min = 0;
     var max = 0;
     if (pattern.includes('-')) {
         let parts = pattern.split('-');
         min = parseInt(parts[0].trim());
         max = parseInt(parts[1].trim());
-        console.log('select', min, max);
     } else {
         max = parseInt(pattern);
     }
+
     if (max <= 0 || isNaN(max)) {
-        return;
+        return null;
     }
+
+    return {min, max};
+}
+
+function go(trainerMode) {
+    const pattern = document.querySelector('#max').value;
+    const {min, max} = getRange(pattern);
     start(min, max, trainerMode);
 }
 
@@ -145,8 +151,11 @@ async function start(from, end, trainerMode) {
 
 function main() {
     document.querySelector('#coctail-wrapper').addEventListener('click', next);
-    document.querySelector('#go').addEventListener('click', () => go(false));
-    document.querySelector('#train').addEventListener('click', () => go(true));
+    const test = document.querySelector('#go');
+    const train = document.querySelector('#train');
+
+    test.addEventListener('click', () => go(false));
+    train.addEventListener('click', () => go(true));
 
     document.querySelectorAll('#presets button').forEach(element =>
         element.addEventListener('click', preset)
@@ -171,6 +180,11 @@ function main() {
             values = null;
         })
     });
+    document.querySelector('#max').addEventListener('input', event => {
+        const disabled = getRange(event.target.value) === null;
+        test.disabled = disabled;
+        train.disabled = disabled;
+    })
 }
 
 window.onload = main
