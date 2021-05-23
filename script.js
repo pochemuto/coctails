@@ -167,7 +167,8 @@ function main() {
     document.querySelectorAll('#manual-select a').forEach(element => {
         element.addEventListener('click', (event) => {
             let targetImage = event.target.dataset.targetImage;
-            show(null, imageUrl(targetImage))
+            show(null, imageUrl(targetImage));
+            values = null;
         })
     });
 }
