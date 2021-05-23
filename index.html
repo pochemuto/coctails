@@ -12,6 +12,8 @@
     <style>
         html {
             padding-top: 5pt;
+            overflow: hidden;
+            touch-action: manipulation;
         }
 
         .label {
@@ -20,7 +22,7 @@
 
         #coctail-wrapper {
             text-align: center;
-            height: calc(100vh - 110pt);
+            height: calc(100vh - 150pt);
             font-size: 30pt;
             color: rgb(32, 32, 32);
             -webkit-user-select: none;
@@ -41,51 +43,45 @@
 
 <body>
     <div id="container">
-        <div class="row">
-            <div class="d-flex flex-row justify-content-center mb-1">
-                <form>
-                    <label for="test-selector" class="form-label label">Test: </label>
-                    <div id="presets" class="btn-group btn-group-sm" role="group">
-                        <button id="test-selector" type="button" class="btn btn-outline-secondary">5</button>
-                        <button type="button" class="btn btn-outline-secondary">10</button>
-                        <button type="button" class="btn btn-outline-secondary">15</button>
-                        <button type="button" class="btn btn-outline-secondary">20</button>
-                        <button type="button" class="btn btn-outline-secondary">25</button>
-                        <button type="button" class="btn btn-outline-secondary">30</button>
-                        <button type="button" class="btn btn-outline-secondary">35</button>
-                        <button type="button" class="btn btn-outline-secondary">40</button>
-                    </div>
-                </form>
-            </div>
+        <div class="d-flex flex-row justify-content-center mb-1">
+            <form>
+                <label for="test-selector" class="form-label label">Test: </label>
+                <div id="presets" class="btn-group btn-group-sm" role="group">
+                    <button id="test-selector" type="button" class="btn btn-outline-secondary">5</button>
+                    <button type="button" class="btn btn-outline-secondary">10</button>
+                    <button type="button" class="btn btn-outline-secondary">15</button>
+                    <button type="button" class="btn btn-outline-secondary">20</button>
+                    <button type="button" class="btn btn-outline-secondary">25</button>
+                    <button type="button" class="btn btn-outline-secondary">30</button>
+                    <button type="button" class="btn btn-outline-secondary">35</button>
+                    <button type="button" class="btn btn-outline-secondary">40</button>
+                </div>
+            </form>
         </div>
-        <div class="row">
-            <div class="d-flex flex-row justify-content-center mb-1">
-                <form>
-                    <label for="train-selector" class="form-label label">Train: </label>
-                    <div id="train-presets" class="btn-group btn-group-sm" role="group">
-                        <button id="train-selector" type="button" data-train="true"
-                            class="btn btn-outline-secondary">5</button>
-                        <button type="button" data-train="true" class="btn btn-outline-secondary">10</button>
-                        <button type="button" data-train="true" class="btn btn-outline-secondary">15</button>
-                        <button type="button" data-train="true" class="btn btn-outline-secondary">20</button>
-                        <button type="button" data-train="true" class="btn btn-outline-secondary">25</button>
-                        <button type="button" data-train="true" class="btn btn-outline-secondary">30</button>
-                        <button type="button" data-train="true" class="btn btn-outline-secondary">35</button>
-                        <button type="button" data-train="true" class="btn btn-outline-secondary">40</button>
-                    </div>
-                </form>
-            </div>
+        <div class="d-flex flex-row justify-content-center mb-1">
+            <form>
+                <label for="train-selector" class="form-label label">Train: </label>
+                <div id="train-presets" class="btn-group btn-group-sm" role="group">
+                    <button id="train-selector" type="button" data-train="true"
+                        class="btn btn-outline-secondary">5</button>
+                    <button type="button" data-train="true" class="btn btn-outline-secondary">10</button>
+                    <button type="button" data-train="true" class="btn btn-outline-secondary">15</button>
+                    <button type="button" data-train="true" class="btn btn-outline-secondary">20</button>
+                    <button type="button" data-train="true" class="btn btn-outline-secondary">25</button>
+                    <button type="button" data-train="true" class="btn btn-outline-secondary">30</button>
+                    <button type="button" data-train="true" class="btn btn-outline-secondary">35</button>
+                    <button type="button" data-train="true" class="btn btn-outline-secondary">40</button>
+                </div>
+            </form>
         </div>
-        <div class="row">
-            <div class="d-flex flex-row justify-content-center">
-                <form>
-                    <div class="input-group input-group-sm">
-                        <input id="max" type="test" class="form-control" id="range" placeholder="выучено">
-                        <button id="go" type="button" class="btn btn-outline-secondary">test</button>
-                        <button id="train" type="button" class="btn btn-outline-secondary">train</button>
-                    </div>
-                </form>
-            </div>
+        <div class="d-flex flex-row justify-content-center">
+            <form>
+                <div class="input-group input-group-sm">
+                    <input id="max" type="test" class="form-control" id="range" placeholder="выучено">
+                    <button id="go" type="button" class="btn btn-outline-secondary">test</button>
+                    <button id="train" type="button" class="btn btn-outline-secondary">train</button>
+                </div>
+            </form>
         </div>
     </div>
 
