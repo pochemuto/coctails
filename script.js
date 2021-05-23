@@ -148,15 +148,16 @@ function main() {
     document.querySelector('#go').addEventListener('click', () => go(false));
     document.querySelector('#train').addEventListener('click', () => go(true));
 
-    document.querySelectorAll('.presets a').forEach(element =>
+    document.querySelectorAll('#presets button').forEach(element =>
         element.addEventListener('click', preset)
     );
 
-    document.querySelectorAll('.train-presets a').forEach(element =>
+    document.querySelectorAll('#train-presets button').forEach(element =>
         element.addEventListener('click', preset)
     );
 
     values.forEach(value => preloadImage(imageUrl(value[1])));
+    start(0, 40, true);
 }
 
 window.onload = main
