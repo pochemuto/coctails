@@ -123,7 +123,7 @@ function go(trainerMode) {
     } else {
         max = parseInt(pattern);
     }
-    if (max <= 0) {
+    if (max <= 0 || isNaN(max)) {
         return;
     }
     start(min, max, trainerMode);
